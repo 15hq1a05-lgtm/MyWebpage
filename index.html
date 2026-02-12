@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me 💖</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(270deg, #ffeff5, #ffe6ee, #ffd6e7, #ffe6f2);
+            background-size: 800% 800%;
+            animation: bgMove 15s ease infinite;
+        }
+
+        /* BACKGROUND ANIMATION */
+        @keyframes bgMove {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 50%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        /* SLIDES */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+        }
+
+        .slide.active {
+            display: flex
+        }
+
+        /* DARK OVERLAY - only for slide 6 */
+        #slide6::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .35);
+            z-index: -1;
+        }
+
+        /* VIDEO */
+        video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: .35;
+        }
+
+        /* BLURRED BACKGROUND IMAGES */
+        .bg-blur {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 110%;
+            min-height: 110%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: blur(8px) brightness(0.6);
+            z-index: -1;
+        }
+
+        /* SLIDE BACKGROUNDS */
+        #slide1 {
+            background: url("DSC_0536.JPG") center/cover no-repeat;
+        }
+
+        #slide1::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0536.JPG") center/cover no-repeat;
+            filter: brightness(.7) blur(8px);
+            z-index: -3;
+        }
+
+        #slide2 {
+            background: url("DSC_0701.JPG") center/cover no-repeat;
+        }
+
+        #slide2::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0701.JPG") center/cover no-repeat;
+            filter: brightness(.7) blur(8px);
+            z-index: -3;
+        }
+
+        #slide3 {
+            background: url("DSC_0702.JPG") center/cover no-repeat;
+        }
+
+        #slide3::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0702.JPG") center/cover no-repeat;
+            filter: brightness(.7) blur(8px);
+            z-index: -3;
+        }
+
+        #slide4 {
+            background: url("DSC_0711.JPG") center/cover no-repeat;
+        }
+
+        #slide4::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0711.JPG") center/cover no-repeat;
+            filter: brightness(.7) blur(8px);
+            z-index: -3;
+        }
+
+        #slide5 {
+            background: url("DSC_0841.JPG") center/cover no-repeat;
+        }
+
+        #slide5::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0841.JPG") center/cover no-repeat;
+            filter: brightness(.7) blur(8px);
+            z-index: -3;
+        }
+
+        #slide6 {
+            background: url("DSC_0733.JPG") center/cover no-repeat;
+        }
+
+        #slide6::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("DSC_0733.JPG") center/cover no-repeat;
+            filter: brightness(.7);
+            z-index: -3;
+        }
+
+        /* RED GLOW TEXT */
+        h1 {
+            color: #fff;
+            text-shadow:
+                0 0 10px #ff6b9d,
+                0 0 20px #ff6b9d,
+                0 0 30px #ff4d6d,
+                0 0 40px #ff1a4d,
+                0 0 60px #ff1a4d;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                opacity: .8
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        /* BUTTONS */
+        button {
+            padding: 15px 40px;
+            font-size: 22px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 12px;
+        }
+
+        .yes {
+            background: #ff4d6d;
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        .no {
+            background: #ddd
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 10px #ff4d6d
+            }
+
+            50% {
+                box-shadow: 0 0 30px #ff4d6d
+            }
+        }
+
+        /* HEART RAIN */
+        .heart {
+            position: fixed;
+            font-size: 22px;
+            animation: fall 4s linear forwards;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-50px)
+            }
+
+            to {
+                transform: translateY(100vh);
+                opacity: 0
+            }
+        }
+
+        /* HUG + KISS BURST */
+        .burst {
+            position: absolute;
+            font-size: 28px;
+            animation: boom 2s forwards;
+        }
+
+        @keyframes boom {
+            to {
+                transform: translate(calc(200px*(var(--x)-0.5)),
+                        calc(200px*(var(--y)-0.5))) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* FLOATING HEARTS */
+        .floating-heart {
+            position: fixed;
+            font-size: 20px;
+            animation: floatUp 6s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh)
+            }
+
+            to {
+                transform: translateY(-100px);
+                opacity: 0
+            }
+        }
+
+        /* BUTTERFLIES */
+        .butterfly {
+            position: fixed;
+            font-size: 26px;
+            animation: flyPath linear forwards;
+        }
+
+        @keyframes flyPath {
+            0% {
+                transform: translate(0, 0)
+            }
+
+            100% {
+                transform: translate(480px, -80px);
+                opacity: 0
+            }
+        }
+
+        /* BIRDS */
+        .bird {
+            position: fixed;
+            font-size: 28px;
+            animation: birdFly 10s linear forwards;
+        }
+
+        @keyframes birdFly {
+            from {
+                transform: translateX(-100px)
+            }
+
+            to {
+                transform: translateX(110vw)
+            }
+        }
+
+        /* STARS */
+        .star {
+            position: fixed;
+            font-size: 18px;
+            animation: shoot 1.5s linear forwards;
+        }
+
+        @keyframes shoot {
+            to {
+                transform: translate(300px, 300px);
+                opacity: 0
+            }
+        }
+
+        /* BALLOONS */
+        .balloon {
+            position: fixed;
+            font-size: 26px;
+            animation: balloonUp 8s linear forwards;
+        }
+
+        @keyframes balloonUp {
+            from {
+                transform: translateY(100vh)
+            }
+
+            to {
+                transform: translateY(-120px);
+                opacity: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="music1" loop>
+        <source src="music1.mp4" type="audio/mp4">
+    </audio>
+    <audio id="music2" loop>
+        <source src="music2.mp4" type="audio/mp4">
+    </audio>
+
+    <!-- SLIDE 1 -->
+    <div class="slide active" id="slide1">
+        <h1>🐻Hii Junnu, Do you love me? 💖</h1>
+        <button class="yes" onclick="next(1)">YES 😍</button>
+        <button class="no run">NO 🙈</button>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide" id="slide2">
+        <h1>🥺 Pakka naa? 💕</h1>
+        <button class="yes" onclick="next(2)">Yesss ❤️</button>
+        <button class="no run">No 😝</button>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide" id="slide3">
+        <h1>💞 How much do you love me?</h1>
+        <button class="yes" onclick="next(3)">Infinity ♾️</button>
+        <button class="yes" onclick="next(3)">More than you 😘</button>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide" id="slide4">
+        <h1>🤗 Will you hug me forever?</h1>
+        <button class="yes" onclick="next(4)">Forever 🫶</button>
+        <button class="no run">Maybe 😜</button>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide" id="slide5">
+        <h1>💍 Promise you’ll stay with me always?</h1>
+        <button class="yes" onclick="next(5)">Promise 💖</button>
+        <button class="no run">Let me think 🙊</button>
+    </div>
+
+    <!-- FINAL SLIDE -->
+    <div class="slide" id="slide6">
+        <video autoplay muted loop>
+            <source src="cute2.mp4">
+        </video>
+
+        <h1>
+            💖 Yayyy! I love you too Junnuuuu 💖<br><br>
+            Today isn’t just Valentine's Day…<br>
+            It’s the day my heart chose you again 🐻💕<br><br>
+            Happy Valentine’s Day ❤️
+        </h1>
+    </div>
+
+    <script>
+
+        /* SLIDE NAVIGATION */
+        function next(n) {
+
+            /* BURST EMOJIS */
+            for (let i = 0; i < 25; i++) {
+                let b = document.createElement("div");
+                b.className = "burst";
+                b.innerText = ["💋", "🤗", "💖"][Math.floor(Math.random() * 3)];
+                b.style.left = "50%";
+                b.style.top = "50%";
+                b.style.setProperty("--x", Math.random());
+                b.style.setProperty("--y", Math.random());
+                document.body.appendChild(b);
+                setTimeout(() => b.remove(), 2000);
+            }
+
+            /* HEART RAIN */
+            for (let i = 0; i < 30; i++) {
+                let h = document.createElement("div");
+                h.className = "heart";
+                h.innerText = "💖";
+                h.style.left = Math.random() * 100 + "%";
+                document.body.appendChild(h);
+                setTimeout(() => h.remove(), 4000);
+            }
+
+            document.getElementById("slide" + n).classList.remove("active");
+            document.getElementById("slide" + (n + 1)).classList.add("active");
+
+            /* SWITCH MUSIC ON FINAL SLIDE */
+            if (n + 1 === 6) {
+                document.getElementById("music1").pause();
+                document.getElementById("music2").play();
+            }
+        }
+
+        /* START MUSIC ON FIRST INTERACTION */
+        let musicStarted = false;
+        document.body.addEventListener("click", () => {
+            if (!musicStarted) {
+                document.getElementById("music1").play();
+                musicStarted = true;
+            }
+        }, { once: false });
+
+        /* RUNNING NO */
+        document.querySelectorAll(".run").forEach(btn => {
+            btn.onmouseover = () => {
+                btn.style.position = "absolute";
+                btn.style.left = Math.random() * 80 + "%";
+                btn.style.top = Math.random() * 80 + "%";
+            };
+        });
+
+        /* FLOATING HEARTS */
+        setInterval(() => {
+            let h = document.createElement("div");
+            h.className = "floating-heart";
+            h.innerText = ["💖", "💕", "💗", "💘"][Math.floor(Math.random() * 4)];
+            h.style.left = Math.random() * 100 + "%";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 6000);
+        }, 500);
+
+        /* BUTTERFLIES */
+        setInterval(() => {
+            for (let i = 0; i < 3; i++) {
+                let b = document.createElement("div");
+                b.className = "butterfly";
+                b.innerText = "🦋";
+                b.style.left = "-50px";
+                b.style.top = Math.random() * 80 + "%";
+                b.style.fontSize = (20 + Math.random() * 20) + "px";
+                b.style.animationDuration = (6 + Math.random() * 6) + "s";
+                b.style.filter = `hue-rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(b);
+                setTimeout(() => b.remove(), 12000);
+            }
+        }, 4000);
+
+        /* BIRDS */
+        setInterval(() => {
+            let bird = document.createElement("div");
+            bird.className = "bird";
+            bird.innerText = "🕊️🕊️";
+            bird.style.top = Math.random() * 50 + "%";
+            document.body.appendChild(bird);
+            setTimeout(() => bird.remove(), 10000);
+        }, 9000);
+
+        /* SHOOTING STARS */
+        setInterval(() => {
+            let s = document.createElement("div");
+            s.className = "star";
+            s.innerText = "🌠";
+            s.style.left = Math.random() * 100 + "%";
+            s.style.top = Math.random() * 40 + "%";
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 1500);
+        }, 3000);
+
+        /* BALLOONS */
+        setInterval(() => {
+            let bl = document.createElement("div");
+            bl.className = "balloon";
+            bl.innerText = ["🎈", "💝"][Math.floor(Math.random() * 2)];
+            bl.style.left = Math.random() * 100 + "%";
+            document.body.appendChild(bl);
+            setTimeout(() => bl.remove(), 8000);
+        }, 2500);
+
+    </script>
+</body>
+
+</html>
