@@ -336,6 +336,80 @@
                 opacity: 0
             }
         }
+
+        /* LOVE LETTER */
+        .love-letter {
+            background: linear-gradient(135deg, #2c1f3d 0%, #1a1225 50%, #2c1f3d 100%);
+            border-radius: 20px;
+            padding: 35px 45px;
+            max-width: 750px;
+            max-height: 55vh;
+            overflow-y: auto;
+            margin: 20px;
+            text-align: left;
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.9;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 77, 109, 0.3);
+            border: 3px solid #ff6b9d;
+            animation: fadeInLetter 2s ease-in-out;
+        }
+
+        .love-letter p {
+            margin: 12px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .love-letter strong {
+            color: #ff9ec4;
+            text-shadow: 0 0 8px #ff6b9d, 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-size: 1.1em;
+        }
+
+        .love-letter em {
+            color: #ffc0d9;
+        }
+
+        @keyframes fadeInLetter {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .love-letter::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .love-letter::-webkit-scrollbar-track {
+            background: #1a1225;
+            border-radius: 10px;
+        }
+
+        .love-letter::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff6b9d, #ff4d6d);
+            border-radius: 10px;
+        }
+
+        #slide6 h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-shadow:
+                0 0 10px #ff6b9d,
+                0 0 20px #ff6b9d,
+                0 0 30px #ff4d6d,
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Darker overlay for slide 6 to improve readability */
+        #slide6::before {
+            background: rgba(0, 0, 0, 0.55);
+        }
     </style>
 </head>
 
@@ -390,12 +464,31 @@
             <source src="cute2.mp4">
         </video>
 
-        <h1>
-            💖 Yayyy! I love you too Junnuuuu 💖<br><br>
-            Today isn’t just Valentine's Day…<br>
-            It’s the day my heart chose you again 🐻💕<br><br>
-            Happy Valentine’s Day ❤️
-        </h1>
+        <h1>💖 I Love You, Vani! 💖<br>Happy Valentine's Day ❤️</h1>
+
+        <div class="love-letter">
+            <p><strong>💌 To My Dear Vani, My Valentine 💕</strong></p>
+            <p>In just one month, our lives will become one.</p>
+            <p>What started as an arranged marriage has slowly turned into something beautiful… and honestly, a little
+                exciting too 🥰</p>
+            <p>Talking to you every day for two hours has become my favorite habit. Your voice calms me, your laughter
+                makes me smile, and your words stay with me long after the call ends.</p>
+            <p>Somewhere between our talks, I realized—I'm already missing you even before we meet. 💭</p>
+            <p>I truly admire the values you grew up with and the grace you carry. Your simplicity, patience, and quiet
+                strength make you incredibly attractive to me.</p>
+            <p>There's something magical about you—soft on the outside, strong at heart. ✨</p>
+            <p>I may be a software engineer by profession, but with you, I'm learning a new kind of language—the
+                language of love, comfort, and trust. 💻❤️</p>
+            <p>Our bond grew naturally, through late conversations, shared thoughts, and that gentle closeness we're
+                building day by day.</p>
+            <p>This Valentine's Day, I don't promise perfection… But I do promise effort, loyalty, care, and a lifetime
+                of holding you close—in words, in actions, and someday, in my arms. 🤗</p>
+            <p>Thank you for choosing me and trusting this journey with me. 🙏</p>
+            <p>I can't wait for a life full of talks, smiles, teasing moments, and endless togetherness. 💑</p>
+            <br>
+            <p><em>With love (and a little mischief),</em></p>
+            <p><strong>Yours always, Hima Sekhar 💖</strong></p>
+        </div>
     </div>
 
     <script>
