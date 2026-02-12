@@ -2,113 +2,251 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Valentine</title>
+<title>Do You Love Me 💖</title>
 
 <style>
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: Arial, sans-serif;
-        overflow: hidden;
-    }
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Comic Sans MS', cursive;
+}
 
-    .card {
-        background: white;
-        padding: 40px 60px;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        animation: fadeIn 2s ease;
-    }
+/* Start Screen */
+#startScreen{
+    position:fixed;
+    inset:0;
+    background:#ffeff5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    cursor:pointer;
+    z-index:999;
+}
 
-    h1 {
-        color: #e60073;
-        font-size: 2.8rem;
-        margin-bottom: 10px;
-        animation: glow 1.5s infinite alternate;
-    }
+/* Slides */
+.slide{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+}
+.slide.active{ display:flex; }
 
-    p {
-        font-size: 1.2rem;
-        color: #444;
-    }
+/* Fullscreen video */
+video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-1;
+}
 
-    button {
-        margin-top: 20px;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 25px;
-        background: #ff4da6;
-        color: white;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+/* Buttons */
+button{
+    padding:15px 40px;
+    font-size:22px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    margin:12px;
+}
+.yes{ background:#ff4d6d; color:white; }
+.no{ background:#ddd; }
 
-    button:hover {
-        background: #e60073;
-        transform: scale(1.1);
+/* Teddy explosion */
+.teddy{
+    position:absolute;
+    font-size:40px;
+    animation:boom 2s forwards;
+}
+@keyframes boom{
+    to{
+        transform:
+          translate(calc(300px*(var(--x)-0.5)),
+                    calc(300px*(var(--y)-0.5)))
+          scale(2);
+        opacity:0;
     }
+}
 
-    @keyframes glow {
-        from { text-shadow: 0 0 10px #ff4da6; }
-        to { text-shadow: 0 0 25px #ff1a75; }
-    }
+/* Fireworks */
+.firework{
+    position:absolute;
+    font-size:35px;
+    animation:fw 2s forwards;
+}
+@keyframes fw{
+    to{ transform:scale(3); opacity:0; }
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(40px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+/* Floating hearts */
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:float 4s linear forwards;
+}
+@keyframes float{
+    from{ transform:translateY(0); opacity:1; }
+    to{ transform:translateY(-300px); opacity:0; }
+}
 
-    /* Floating Hearts */
-    .heart {
-        position: absolute;
-        color: #ff1a75;
-        font-size: 20px;
-        animation: floatUp 6s linear infinite;
-    }
+/* Bounce animation for YES button */
+@keyframes bounce{
+    0%{ transform: scale(1); }
+    50%{ transform: scale(1.2); }
+    100%{ transform: scale(1); }
+}
 
-    @keyframes floatUp {
-        from {
-            transform: translateY(100vh) scale(0.5);
-            opacity: 1;
-        }
-        to {
-            transform: translateY(-10vh) scale(1.5);
-            opacity: 0;
-        }
-    }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>You Are My Valentine ❤️</h1>
-    <p>Forever my favorite person 💕</p>
-    <button onclick="showLove()">Click for Surprise</button>
+<!-- START SCREEN -->
+<div id="startScreen">🐻 Hey Birthday Girl!  Click me to ask you a small question about us💕</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 -->
+<div class="slide active" id="slide1">
+    <video autoplay muted loop playsinline>
+        <source src="cute1.mp4" type="video/mp4">
+    </video>
+
+    <h1>🐻 Suppu!!!!!!!!!!!!!!!! Do you love me? 💖</h1>
+<div id="timer" style="font-size:24px; color:#ff4d6d; margin:10px 0;">10</div>
+<button class="yes" id="yes1" aria-label="Yes I love you">YESSSSSSSS 😍</button>
+<button class="no" id="no1" aria-label="No 🙈">NO 🙈</button>
+
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide2">
+    <video autoplay muted loop playsinline>
+        <source src="cute1.mp4" type="video/mp4">
+    </video>
+
+    <h1>🥺 Pleaseee… love me naaa 💕</h1>
+    <button class="yes" id="yes2">YES 💘</button>
+    <button class="no" id="runNo">NO 😝</button>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide3">
+    <video autoplay muted loop playsinline id="finalVideo">
+        <source src="cute2.mp4" type="video/mp4">
+    </video>
+
+    <h1>💖 Yayyy! I love you too, Supraja
+
+Today isn’t just your birthday… it’s the day my heart chose you all over again 💖🐻
+
+Wish you a Happiest Birthday 💖</h1>
 </div>
 
 <script>
-function showLove() {
-    alert("I Love You ❤️ Happy Valentine’s Day 💘");
+document.addEventListener("DOMContentLoaded",()=>{
 
-    // Create floating hearts
-    for (let i = 0; i < 25; i++) {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
+const music = document.getElementById("music");
+const startScreen = document.getElementById("startScreen");
 
-        setTimeout(() => heart.remove(), 6000);
+const s1 = document.getElementById("slide1");
+const s2 = document.getElementById("slide2");
+const s3 = document.getElementById("slide3");
+
+/* Start music on first tap */
+startScreen.addEventListener("click",()=>{
+    music.play().catch(()=>{});
+    startScreen.style.display="none";
+});
+
+// Countdown Timer on Slide 1
+const timerDiv = document.getElementById("timer");
+let count = 10; // seconds
+
+const countdown = setInterval(()=>{
+    if(s1.classList.contains("active")){  // Only run when slide1 is active
+        count--;
+        if(count >= 0){
+            timerDiv.innerText = count;
+        }
+        if(count === 0){
+            clearInterval(countdown);
+            // Optional: animate YES button to nudge user
+            const yesBtn = document.getElementById("yes1");
+            yesBtn.style.animation = "bounce 0.5s alternate 5";
+        }
     }
+}, 1000);
+
+/* NO → slide 2 */
+document.getElementById("no1").onclick = ()=>{
+    s1.classList.remove("active");
+    s2.classList.add("active");
+};
+
+/* YES action */
+function yesAction(){
+
+     /* Teddy explosion */
+    for(let i=0;i<25;i++){
+        let t=document.createElement("div");
+        t.className="teddy";
+        t.innerText="🐻";
+        t.style.left="50%";
+        t.style.top="50%";
+        t.style.setProperty("--x",Math.random());
+        t.style.setProperty("--y",Math.random());
+        document.body.appendChild(t);
+        setTimeout(()=>t.remove(),2000);
+    }
+
+    /* Fireworks / Confetti */
+    for(let i=0;i<15;i++){
+        let f=document.createElement("div");
+        f.className="firework";
+        f.innerText = Math.random() > 0.5 ? "🎉" : "💞";
+        f.style.left=Math.random()*100+"%";
+        f.style.top=Math.random()*100+"%";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),2000);
+    }
+
+    /* Show final slide */
+    setTimeout(()=>{
+        s1.classList.remove("active");
+        s2.classList.remove("active");
+        s3.classList.add("active");
+
+        const v=document.getElementById("finalVideo");
+        v.muted=true;
+        v.play();
+    },700);
 }
+
+document.getElementById("yes1").onclick = yesAction;
+document.getElementById("yes2").onclick = yesAction;
+
+/* NO button runs away */
+const runBtn=document.getElementById("runNo");
+runBtn.onmouseover=()=>{
+    runBtn.style.position="absolute";
+    runBtn.style.left=Math.random()*80+"%";
+    runBtn.style.top=Math.random()*80+"%";
+};
+
+});
 </script>
 
 </body>
