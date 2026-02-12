@@ -1,117 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<title>My Valentine</title>
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
 
-        nav ul {
-            padding: 0;
-            list-style: none;
-            text-align: center;
-        }
+    .card {
+        background: white;
+        padding: 40px 60px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        animation: fadeIn 2s ease;
+    }
 
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
+    h1 {
+        color: #e60073;
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        animation: glow 1.5s infinite alternate;
+    }
 
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    p {
+        font-size: 1.2rem;
+        color: #444;
+    }
 
-        nav a:hover {
-            color: #ff9900;
-        }
+    button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        background: #ff4da6;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
-            background-color: #fff;
-            margin-top: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    button:hover {
+        background: #e60073;
+        transform: scale(1.1);
+    }
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #ff4da6; }
+        to { text-shadow: 0 0 25px #ff1a75; }
+    }
 
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        button:hover {
-            background-color: #218838;
+    /* Floating Hearts */
+    .heart {
+        position: absolute;
+        color: #ff1a75;
+        font-size: 20px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from {
+            transform: translateY(100vh) scale(0.5);
+            opacity: 1;
         }
-    </style>
+        to {
+            transform: translateY(-10vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Welcome to My Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<div class="card">
+    <h1>You Are My Valentine ❤️</h1>
+    <p>Forever my favorite person 💕</p>
+    <button onclick="showLove()">Click for Surprise</button>
+</div>
 
-    <div class="container">
-        <h2>About This Page</h2>
-        <p>This is a basic HTML5 template. It contains the essential structure required for any webpage.</p>
-        
-        <h3>Why learn HTML?</h3>
-        <ul>
-            <li>It is the backbone of the internet.</li>
-            <li>It is easy to learn and use.</li>
-            <li>It works on all browsers and devices.</li>
-        </ul>
+<script>
+function showLove() {
+    alert("I Love You ❤️ Happy Valentine’s Day 💘");
 
-        <h3>Call to Action</h3>
-        <p>Click the button below to see how a button looks.</p>
-        <button onclick="alert('Hello! You clicked the button.')">Click Me</button>
-    </div>
+    // Create floating hearts
+    for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
 
-    <footer>
-        <p>&copy; 2024 My Basic Website. All rights reserved.</p>
-    </footer>
+        setTimeout(() => heart.remove(), 6000);
+    }
+}
+</script>
 
 </body>
 </html>
