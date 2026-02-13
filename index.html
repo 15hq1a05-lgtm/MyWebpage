@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Do You Love Me 💖</title>
 
     <style>
@@ -13,7 +14,9 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', 'Marker Felt', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-style: normal;
+            -webkit-text-size-adjust: 100%;
             background: linear-gradient(270deg, #ffeff5, #ffe6ee, #ffd6e7, #ffe6f2);
             background-size: 800% 800%;
             animation: bgMove 15s ease infinite;
@@ -410,6 +413,71 @@
         #slide6::before {
             background: rgba(0, 0, 0, 0.55);
         }
+
+        /* MOBILE RESPONSIVE STYLES */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 1.5em !important;
+                padding: 0 15px;
+                line-height: 1.4;
+            }
+
+            button {
+                padding: 12px 30px;
+                font-size: 18px;
+                margin: 8px;
+            }
+
+            .love-letter {
+                padding: 20px 25px;
+                margin: 15px;
+                max-width: 90%;
+                max-height: 50vh;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .love-letter p {
+                margin: 10px 0;
+            }
+
+            #slide6 h1 {
+                font-size: 1.3em !important;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.2em !important;
+                padding: 0 10px;
+            }
+
+            button {
+                padding: 10px 25px;
+                font-size: 16px;
+                margin: 6px;
+            }
+
+            .love-letter {
+                padding: 15px 18px;
+                margin: 10px;
+                font-size: 14px;
+                line-height: 1.6;
+                max-height: 45vh;
+            }
+
+            #slide6 h1 {
+                font-size: 1.1em !important;
+            }
+
+            .floating-heart,
+            .butterfly,
+            .balloon,
+            .star {
+                font-size: 16px !important;
+            }
+        }
     </style>
 </head>
 
@@ -474,19 +542,17 @@
             <p>Talking to you every day for two hours has become my favorite habit. Your voice calms me, your laughter
                 makes me smile, and your words stay with me long after the call ends.</p>
             <p>Somewhere between our talks, I realized—I'm already missing you even before we meet. 💭</p>
-            <p>I truly admire the values you grew up with and the grace you carry. Your simplicity, patience, and quiet
-                strength make you incredibly attractive to me.</p>
-            <p>There's something magical about you—soft on the outside, strong at heart. ✨</p>
+            <p>Your simplicity, patience, and quiet strength make you incredibly attractive to me.</p>
             <p>I may be a software engineer by profession, but with you, I'm learning a new kind of language—the
                 language of love, comfort, and trust. 💻❤️</p>
-            <p>Our bond grew naturally, through late conversations, shared thoughts, and that gentle closeness we're
+            <p>Our bond grew naturally, through funny conversations, shared thoughts, and that gentle closeness we're
                 building day by day.</p>
             <p>This Valentine's Day, I don't promise perfection… But I do promise effort, loyalty, care, and a lifetime
                 of holding you close—in words, in actions, and someday, in my arms. 🤗</p>
             <p>Thank you for choosing me and trusting this journey with me. 🙏</p>
             <p>I can't wait for a life full of talks, smiles, teasing moments, and endless togetherness. 💑</p>
             <br>
-            <p><em>With lots of lubbb 💖💖💖,</em></p>
+            <p><em>With lots of lubbb,</em></p>
             <p><strong>Yours always, Hima 💖</strong></p>
         </div>
     </div>
@@ -606,6 +672,5 @@
 
     </script>
 </body>
-
 
 </html>
